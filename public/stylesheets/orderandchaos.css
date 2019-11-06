@@ -1,49 +1,74 @@
 @media (min-width: 480px) {
     .game {
-        width: 300px;
+        width: 340px;
     }
 
-    .row {
-        height: 50px;
+    .game-row {
+        height: 56px;
         padding-top: 2px;
         padding-bottom: 2px;
     }
 
-    .cell {
+    .game-cell {
         margin-left: 2px;
         margin-right: 2px;
     }
+
+    .choice {
+        opacity: 10%;
+    }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
     .game {
-        width: 480px;
+        width: 460px;
     }
 
-    .row {
-        height: 80px;
+    .game-row {
+        height: 76px;
         padding-top: 4px;
         padding-bottom: 4px;
     }
 
-    .cell {
+    .game-cell {
         margin-left: 4px;
         margin-right: 4px;
+    }
+
+    .choice {
+        opacity: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .game {
+        width: 620px;
+    }
+
+    .game-row {
+        height: 103px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .game-cell {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
 
 @media (min-width: 1200px) {
     .game {
-        width: 840px;
+        width: 740px;
     }
 
-    .row {
-        height: 140px;
+    .game-row {
+        height: 123px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
-    .cell {
+    .game-cell {
         margin-left: 10px;
         margin-right: 10px;
     }
@@ -55,9 +80,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 5px;
+    background-color: lightgrey;
 }
 
-.row {
+.game-row {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -67,12 +94,12 @@
 }
 
 
-h1 {
+h1.turn {
     text-align: center;
 }
 
 
-.cell {
+.game-cell {
     flex-grow: 1;
     height: 100%;
     border-radius: 5%;
@@ -96,7 +123,6 @@ h1 {
     width: 50%;
     height: 100%;
     border-radius: 5%;
-    opacity: 0;
 }
 
 .choice:hover {
@@ -109,4 +135,21 @@ h1 {
 
 .blue-choice {
     background-color: blue;
+}
+
+.side-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.side-button {
+    margin: 5px;
+    width: 100px;
+    flex-grow: 1;
+}
+
+.error-message {
+    margin: 10px auto;
 }
