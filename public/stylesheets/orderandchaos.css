@@ -1,0 +1,112 @@
+@media (min-width: 480px) {
+    .game {
+        width: 300px;
+    }
+
+    .row {
+        height: 50px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .cell {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+}
+
+@media (min-width: 720px) {
+    .game {
+        width: 480px;
+    }
+
+    .row {
+        height: 80px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .cell {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .game {
+        width: 840px;
+    }
+
+    .row {
+        height: 140px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .cell {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.game {
+    margin: auto;
+    font-family: Calibri, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+
+.cell {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 5%;
+    position: relative;
+    display: flex;
+}
+
+.empty-cell {
+    background-color: grey;
+}
+
+.red-cell {
+    background-color: darkred;
+}
+
+.blue-cell {
+    background-color: darkblue;
+}
+
+.choice {
+    width: 50%;
+    height: 100%;
+    border-radius: 5%;
+    opacity: 0;
+}
+
+.choice:hover {
+    opacity: 100%;
+}
+
+.red-choice {
+    background-color: red;
+}
+
+.blue-choice {
+    background-color: blue;
+}

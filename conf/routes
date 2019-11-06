@@ -1,0 +1,20 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Controller for Order and Chaos
+
+GET     /                           controllers.GameController.display
+
+GET     /about                      controllers.GameController.about
+
+GET     /play/*x/*y/*value          controllers.GameController.set(x, y, value)
+
+GET     /undo                       controllers.GameController.undo
+
+GET     /redo                       controllers.GameController.redo
+
+GET     /reset                      controllers.GameController.reset
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

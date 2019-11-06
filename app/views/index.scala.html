@@ -1,0 +1,46 @@
+@()
+
+@main("Order and Chaos") {
+    <div class="card">
+        <h1 class="card-header">About Order and Chaos</h1>
+        <div class="card-body">
+            <p class="card-text">
+                Order and Chaos is a board game played by two players. One players goal is to build columns of 5.
+                The other players goal is to prevent this from happening. Each player can play both colors.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+    <h1 class="card-header">Instructions</h1>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text">
+                            To play a color hover over the field you want to set and the colors to click on will appear.
+                            The red is in the left half of the field and the blue is in the right half of the field.
+                            Once a field is set this way it can only be removed with the undo function
+                        </p>
+                        <p class="card-text">
+                            To start a new game you can click the "New" button in the navigation bar and the board will
+                            be reset. You can still return to your previous game state with the "Undo" button.
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">
+                            Once a row of five in horizontal, diagonal or vertical direction exists Order wins.
+                            It is not possible to set any fields after this. The only options are to undo the last turn
+                            or start a new game.
+                        </p>
+                        <p class="card-text">
+                            If it is impossible for Order to win Chaos automatically wins. The game will also block any
+                            fields from being set should this be the case.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href="/" class="btn btn-primary">Play</a>
+        </div>
+    </div>
+}

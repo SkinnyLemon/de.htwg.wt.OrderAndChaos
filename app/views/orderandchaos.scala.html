@@ -1,0 +1,44 @@
+@(controller: de.htwg.se.orderandchaos.control.Controller, error: String)
+    @size = @{
+        de.htwg.se.orderandchaos.model.Grid.WIDTH
+    }
+
+    @grid = @{
+        controller.grid
+    }
+
+    @main("Order and Chaos") {
+        <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/orderandchaos.css")' />
+        <script src='@routes.Assets.versioned("javascripts/bootstrap.min.js")'> </script>
+
+        <div class="game">
+            <h1>Turn: @controller.turn</h1>
+            <div class="btn-group" >
+                <a href="/undo" class="btn btn-primary"> Undo </a>
+                <a href="/redo" class="btn btn-primary"> Redo </a>
+            </div>
+            @for(x <- size until 0 by -1) {
+                <div class="row">
+                @for(y <- size until 0 by -1) {
+                    @if(!grid(x - 1, y - 1).isSet) {
+                        <div class="cell empty-cell">
+                            <a href="/play/@x/@y/R" class="choice red-choice"></a>
+                            <a href="/play/@x/@y/B" class="choice blue-choice"></a>
+                        </div>
+                    } else {
+                        @if(grid(x - 1, y - 1).isRed) {
+                            <div class="cell red-cell"></div>
+                        } else {
+                            <div class="cell blue-cell"></div>
+                        }
+                    }
+                }
+                </div>
+            }
+            @if(!(error equals "")) {
+                <div class="alert alert-primary" role="alert">
+                @error
+                </div>
+            }
+        </div>
+    }
