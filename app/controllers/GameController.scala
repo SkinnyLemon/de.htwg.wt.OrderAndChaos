@@ -1,7 +1,7 @@
 package controllers
 
 import de.htwg.se.orderandchaos.OrderAndChaos
-import de.htwg.se.orderandchaos.control.{Control, FieldSet, Win}
+import de.htwg.se.orderandchaos.control.{Control, CellSet, Win}
 
 import javax.inject._
 import play.api.mvc._
