@@ -19,11 +19,11 @@
     }
 }
 
-@media (min-width: 576px) {
+/*@media (min-width: 576px) {
     .choice {
         opacity: 0;
     }
-}
+}*/
 
 @media (min-width: 768px) {
     .game {
@@ -115,10 +115,12 @@ h1.turn {
 
 .red-cell {
     background-color: darkred;
+    width : 100%;
 }
 
 .blue-cell {
     background-color: darkblue;
+    width : 100%;
 }
 
 .choice {
