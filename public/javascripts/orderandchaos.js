@@ -4,9 +4,9 @@ let game_json = {
     6: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
     5: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
     4: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    3: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    2: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    1: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
+    3: {6:"E",5:"R",4:"E",3:"E",2:"E",1:"E"},
+    2: {6:"E",5:"E",4:"E",3:"E",2:"B",1:"E"},
+    1: {6:"E",5:"E",4:"E",3:"R",2:"E",1:"E"},
 };
 
 class Grid {
@@ -34,6 +34,14 @@ function fillGrid(grid) {
                 html = html + "<a href=\"/play/" +row+"/" +col + "/R\" class=\"choice red-choice\" onclick='setCell("+row+","+col+",\"R\")'>" + "</a>" + "\n";
                 html = html + "<a href=\"/play/" +row+"/"+col+"/B\" class=\"choice blue-choice\" onclick='setCell("+row+","+col+",\"B\")'>" + "</a>" + "\n";
                 console.log(html)
+                $("#game-cell" + row + col).html(html);
+                html = "";
+            } else if (grid.cells[row][col] == "R") {
+                html = "<div class=\"red-cell\"></div>"
+                $("#game-cell" + row + col).html(html);
+                html = "";
+            } else {
+                html = "<div class=\"blue-cell\"></div>"
                 $("#game-cell" + row + col).html(html);
                 html = "";
             }
