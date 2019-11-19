@@ -33,10 +33,10 @@ function fillGrid(grid) {
             if (grid.cells[row][col] == "E") {
                 html = html + "<a href=\"/play/" +row+"/" +col + "/R\" class=\"choice red-choice\" onclick='setCell("+row+","+col+",\"R\")'>" + "</a>" + "\n";
                 html = html + "<a href=\"/play/" +row+"/"+col+"/B\" class=\"choice blue-choice\" onclick='setCell("+row+","+col+",\"B\")'>" + "</a>" + "\n";
+                console.log(html)
+                $("#game-cell" + row + col).html(html);
+                html = "";
             }
-            console.log(html)
-            document.getElementById("game-cell" + row + col).innerHTML = html;
-            html = "";
         }
     }
 }
@@ -44,8 +44,7 @@ function fillGrid(grid) {
 function setCell(x, y , value) {
     console.log("Setting cell ("+x+","+y+")"+"to"+value);
     grid.cells[x][y] = value;
-    document.getElementById("game-cell" + x + y).off("click");
-
+    $("#game-cell" + x + y).off("click");
 }
 
 $( document ).ready(function() {
