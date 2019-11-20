@@ -19,11 +19,11 @@
     }
 }
 
-/*@media (min-width: 576px) {
+@media (min-width: 576px) {
     .choice {
         opacity: 0;
     }
-}*/
+}
 
 @media (min-width: 768px) {
     .game {
@@ -76,6 +76,10 @@
     }
 }
 
+body {
+    background-color: #333333;
+}
+
 .game {
     margin: auto;
     font-family: Calibri, sans-serif;
@@ -83,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-    background-color: lightgrey;
+    background-color: #666666;
 }
 
 .game-row {
@@ -96,7 +100,7 @@
 }
 
 
-h1.turn {
+.turn {
     text-align: center;
 }
 
@@ -110,7 +114,8 @@ h1.turn {
 }
 
 .empty-cell {
-    background-color: grey;
+    background-color: #888888;
+    width : 100%;
 }
 
 .red-cell {

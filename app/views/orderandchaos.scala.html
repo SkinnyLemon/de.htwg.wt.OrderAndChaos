@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="turn">Turn: @controller.turn</h1>
+                    <h1 class="turn text-light">Turn: @controller.turn</h1>
                 </div>
             </div>
             <div class="row">
@@ -21,7 +21,7 @@
                     <div class="game">
                     @for(row <- size until 0 by -1) {
                         <div class="game-row">
-                        @for(col <- size until 0 by -1) {
+                        @for(col <- 1 to size) {
                             <div class="game-cell" id="game-cell@row@col"></div>
                         }
                         </div>

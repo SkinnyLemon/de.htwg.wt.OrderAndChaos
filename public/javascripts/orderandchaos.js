@@ -1,12 +1,11 @@
-let size = 6
 let game_json = {
-    size : 6,
-    6: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    5: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    4: {6:"E",5:"E",4:"E",3:"E",2:"E",1:"E"},
-    3: {6:"E",5:"R",4:"E",3:"E",2:"E",1:"E"},
-    2: {6:"E",5:"E",4:"E",3:"E",2:"B",1:"E"},
-    1: {6:"E",5:"E",4:"E",3:"R",2:"E",1:"E"},
+    size: 6,
+    6: {1: "B", 2: "B", 3: "E", 4: "E", 5: "B", 6: "R"},
+    5: {1: "B", 2: "E", 3: "E", 4: "E", 5: "E", 6: "B"},
+    4: {1: "E", 2: "E", 3: "E", 4: "E", 5: "E", 6: "E"},
+    3: {1: "E", 2: "E", 3: "E", 4: "E", 5: "E", 6: "E"},
+    2: {1: "R", 2: "E", 3: "E", 4: "E", 5: "E", 6: "R"},
+    1: {1: "R", 2: "R", 3: "E", 4: "E", 5: "B", 6: "B"}
 };
 
 class Grid {
@@ -27,36 +26,35 @@ let grid = new Grid(game_json.size);
 grid.fill_json(game_json);
 
 function fillGrid(grid) {
-    html = "";
-    for (var row in grid.cells) {
-        for (var col in grid.cells[row]) {
-            if (grid.cells[row][col] == "E") {
-                html = html + "<a href=\"/play/" +row+"/" +col + "/R\" class=\"choice red-choice\" onclick='setCell("+row+","+col+",\"R\")'>" + "</a>" + "\n";
-                html = html + "<a href=\"/play/" +row+"/"+col+"/B\" class=\"choice blue-choice\" onclick='setCell("+row+","+col+",\"B\")'>" + "</a>" + "\n";
-                console.log(html)
-                $("#game-cell" + row + col).html(html);
-                html = "";
-            } else if (grid.cells[row][col] == "R") {
-                html = "<div class=\"red-cell\"></div>"
-                $("#game-cell" + row + col).html(html);
-                html = "";
-            } else {
-                html = "<div class=\"blue-cell\"></div>"
-                $("#game-cell" + row + col).html(html);
-                html = "";
-            }
+    for (const row in grid.cells) {
+        for (const col in grid.cells[row]) {
+            setCell(row, col, grid.cells[row][col])
         }
     }
 }
 
-function setCell(x, y , value) {
-    console.log("Setting cell ("+x+","+y+")"+"to"+value);
-    grid.cells[x][y] = value;
-    $("#game-cell" + x + y).off("click");
+function f() {
+    console.log("Test")
 }
 
-$( document ).ready(function() {
-    console.log( "Document is ready, filling grid" );
+function setCell(x, y, value) {
+    console.log("Setting cell (" + x + "," + y + ") to " + value);
+    grid.cells[x][y] = value;
+    const query = $("#game-cell" + x + y);
+    query.addClass(value === "E" ? "empty-cell" : value === "B" ? "blue-cell" : "red-cell");
+    if (value === "E") {
+        let html = "<div class=\"choice red-choice\"/>\n";
+        html = html + "<div class=\"choice blue-choice\"/>\n";
+        query.html(html);
+        query.children().eq(0).click(function() { setCell(x, y, "R") });
+        query.children().eq(1).click(function() { setCell(x, y, "B") });
+    } else {
+        query.empty();
+    }
+}
+
+$(document).ready(function () {
+    console.log("Document is ready, filling grid");
     fillGrid(grid);
     console.log("Grid is filled")
 });
