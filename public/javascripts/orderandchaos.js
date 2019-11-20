@@ -33,10 +33,6 @@ function fillGrid(grid) {
     }
 }
 
-function f() {
-    console.log("Test")
-}
-
 function setCell(x, y, value) {
     console.log("Setting cell (" + x + "," + y + ") to " + value);
     grid.cells[x][y] = value;
