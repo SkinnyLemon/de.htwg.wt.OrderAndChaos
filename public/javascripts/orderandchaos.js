@@ -1,13 +1,3 @@
-let game_json = {
-    size: 6,
-    6: {1: "B", 2: "B", 3: "E", 4: "E", 5: "B", 6: "R"},
-    5: {1: "B", 2: "E", 3: "E", 4: "E", 5: "E", 6: "B"},
-    4: {1: "E", 2: "E", 3: "E", 4: "E", 5: "E", 6: "E"},
-    3: {1: "E", 2: "E", 3: "E", 4: "E", 5: "E", 6: "E"},
-    2: {1: "R", 2: "E", 3: "E", 4: "E", 5: "E", 6: "R"},
-    1: {1: "R", 2: "R", 3: "E", 4: "E", 5: "B", 6: "B"}
-};
-
 class Grid {
     constructor(size) {
         this.size = size;
@@ -21,9 +11,6 @@ class Grid {
     }
 
 }
-
-let grid = new Grid(game_json.size);
-grid.fill_json(game_json);
 
 function fillGrid(grid) {
     for (const row in grid.cells) {
@@ -46,11 +33,32 @@ function setCell(x, y, value) {
         query.children().eq(1).click(function() { setCell(x, y, "B") });
     } else {
         query.empty();
+        setCellOnServer(x,y,value)
     }
+}
+
+function setCellOnServer(x, y, value) {
+    $.get("/play/"+x+"/"+y+"/"+value, function(data) {
+            console.log("Set cell on Server");
+    });
+}
+
+function loadJson() {
+    $.ajax({
+        method: "GET",
+        url: "/json",
+        dataType: "json",
+
+        success: function (result) {
+            grid = new Grid(result.grid.size);
+            grid.fill_json(result.grid.cells);
+            fillGrid(grid);
+        }
+    });
 }
 
 $(document).ready(function () {
     console.log("Document is ready, filling grid");
-    fillGrid(grid);
-    console.log("Grid is filled")
+    loadJson();
+    console.log("Grid is filled");
 });
