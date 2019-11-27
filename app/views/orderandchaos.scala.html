@@ -1,6 +1,6 @@
-@(controller: de.htwg.se.orderandchaos.control.Controller, error: String)
+@(controller: de.htwg.se.orderandchaos.control.controller.Controller, error: String)
     @size = @{
-        de.htwg.se.orderandchaos.model.Grid.WIDTH
+        de.htwg.se.orderandchaos.model.grid.Grid.WIDTH
     }
 
     @grid = @{
@@ -13,16 +13,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="turn text-light">Turn: @controller.turn</h1>
+                    <h1 class="turn text-light" id="top-text">Turn: @controller.turn</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="game">
-                    @for(row <- size until 0 by -1) {
+                    @for(row <- size - 1 to 0 by -1) {
                         <div class="game-row">
-                        @for(col <- 1 to size) {
-                            <div class="game-cell" id="game-cell@row@col"></div>
+                        @for(col <- 0 until size) {
+                            <div class="game-cell" id="game-cell@col@row"></div>
                         }
                         </div>
                     }
@@ -30,8 +30,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="side-buttons">
-                        <a href="/undo" class="btn btn-primary side-button"> Undo </a>
-                        <a href="/redo" class="btn btn-primary side-button"> Redo </a>
+                        <div class="btn btn-primary side-button" id="undo-button"> Undo </div>
+                        <div class="btn btn-primary side-button" id="redo-button"> Redo </div>
                     </div>
                 </div>
             </div>
