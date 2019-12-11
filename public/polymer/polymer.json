@@ -1,0 +1,18 @@
+{
+  "npm": true,
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ]
+  },
+  "entrypoint": "index.html",
+  "shell": "src/order-and-chaos.js",
+  "sources": [
+    "src/**.js",
+    "package.json"
+  ],
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/bundles/**"
+  ],
+  "builds": [{ "preset": "es6-bundled" }]
+}

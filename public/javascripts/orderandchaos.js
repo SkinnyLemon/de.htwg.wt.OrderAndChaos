@@ -1,19 +1,5 @@
 let status;
-const webSocket = new WebSocket("ws://localhost:9000/socket");
-webSocket.onopen = function () {
-    console.log("WebSocket opened");
-};
-webSocket.onmessage = function (message) {
-    console.log("WebSocket Message received");
-    console.log(JSON.parse(message.data));
-    status = new Status(JSON.parse(message.data));
-};
-webSocket.onerror = function () {
-    console.error("WebSocket error");
-};
-webSocket.onclose = function () {
-    console.log("WebSocket closed");
-};
+let webSocket;
 
 class Status {
     constructor(websocket) {
@@ -116,4 +102,19 @@ $(document).ready(function () {
     $("#redo-button").click(function () {
         redo()
     });
+    webSocket = new WebSocket("ws://localhost:9000/socket");
+    webSocket.onopen = function () {
+        console.log("WebSocket opened");
+    };
+    webSocket.onmessage = function (message) {
+        console.log("WebSocket Message received");
+        console.log(JSON.parse(message.data));
+        status = new Status(JSON.parse(message.data));
+    };
+    webSocket.onerror = function () {
+        console.error("WebSocket error");
+    };
+    webSocket.onclose = function () {
+        console.log("WebSocket closed");
+    };
 });

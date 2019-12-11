@@ -44,11 +44,15 @@ class GameController @Inject()(cc: ControllerComponents)(implicit system: ActorS
     Ok(views.html.orderandchaos(control.controller, ""))
   }
 
+  def polymer: Action[AnyContent] = Action {
+    Ok(views.html.polymer())
+  }
+
   def about: Action[AnyContent] = Action {
     Ok(views.html.index())
   }
 
-  def socket = WebSocket.accept[String, String](_ =>  {
+  def socket: WebSocket = WebSocket.accept[String, String](_ =>  {
     ActorFlow.actorRef(out => {
       println("Websocket connected!")
       OacWebsocketActor.create(out)
