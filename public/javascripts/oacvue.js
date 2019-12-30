@@ -1,8 +1,8 @@
-let grid = [row(1),row(2),row(3),row(4),row(5),row(6)]
+let grid = [row(0),row(1),row(2),row(3),row(4),row(5)]
 
 function row(row) {
     let gameCells= []
-    for (let col=1;col<7;col++) {
+    for (let col=0;col<6;col++) {
         gameCells.push({row: row, col: col, pos: "game-cell" + row + col})
     }
     return gameCells
@@ -40,9 +40,7 @@ Vue.component('my-buttons', {
 })
 
 $(document).ready(function() {
-
     var game = new Vue({
         el: '#game',
     })
-    console.log("i am here")
 })
