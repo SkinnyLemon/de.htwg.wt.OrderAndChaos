@@ -32,11 +32,23 @@ Vue.component('my-buttons', {
     template: `
         <div class="col-sm-4">
             <div class="side-buttons">
-                <div class="btn btn-primary side-button" id="undo-button"> Undo </div>
-                <div class="btn btn-primary side-button" id="redo-button"> Redo </div>
+                <div class="btn btn-primary side-button" id="undo-button" @click="undo"> Undo </div>
+                <div class="btn btn-primary side-button" id="redo-button" @click="redo"> Redo </div>
             </div>
         </div>
-    `
+    `,
+    methods: {
+        undo: function() {
+            console.log("Undoing last step");
+            const message = {"action": "undo"};
+            sendMessage(message);
+        },
+        redo: function() {
+            console.log("Redoing last step");
+            const message = {"action": "redo"};
+            sendMessage(message);
+        }
+    }
 })
 
 let status;
@@ -134,17 +146,6 @@ function setCell(x, y, type) {
     sendMessage(message);
 }
 
-function undo() {
-    console.log("Undoing last step");
-    const message = {"action": "undo"};
-    sendMessage(message);
-}
-
-function redo() {
-    console.log("Redoing last step");
-    const message = {"action": "redo"};
-    sendMessage(message);
-}
 
 function sendMessage(message) {
     webSocket.send(JSON.stringify(message))
