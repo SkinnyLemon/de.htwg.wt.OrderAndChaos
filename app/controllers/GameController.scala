@@ -20,6 +20,11 @@ class GameController @Inject()(cc: ControllerComponents)(implicit system: ActorS
   val control: Control = OrderAndChaos.control
   val jsonExecutor = new JsonExecutor(control)
 
+  def offline() = Action {
+    implicit request: Request[AnyContent] =>
+      Ok(views.html.offline())
+  }
+
   def set(x: String, y: String, value: String): Action[AnyContent] = Action {
     val error = getError(() => control.play(x.toInt, y.toInt, value))
     Ok(views.html.orderandchaos(control.controller, error))

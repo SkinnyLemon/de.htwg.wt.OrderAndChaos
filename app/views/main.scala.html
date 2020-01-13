@@ -15,6 +15,7 @@
         <script src="@routes.Assets.versioned("javascripts/popper.js")" ></script>
         <script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")" ></script>
         <script src="@routes.Assets.versioned("javascripts/bootstrap.js")" ></script>
+        <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
         <script src="@routes.Assets.versioned("javascripts/orderandchaos.js")"></script>
     </head>
     <body>
@@ -36,5 +37,7 @@
             </div>
         </nav>
         @content
+
+        <script type="text/javascript" src="/sw.js"></script>
     </body>
 </html>
