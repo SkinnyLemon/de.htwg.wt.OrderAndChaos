@@ -1,6 +1,6 @@
 // Installation: Store offline page
 self.addEventListener('install', function(event) {
-    var offlineSite = new Request('offline.html');
+    var offlineSite = new Request('offline');
     event.waitUntil(
         fetch(offlineSite).then(function(response) {
             return caches.open('mypwa-offline').then(function(cache) {
@@ -16,7 +16,7 @@ self.addEventListener('fetch', function(event) {
         fetch(event.request).catch(function(error) {
                 console.error( '[PWA Info] App offline. Serving stored offline page: ' + error );
                 return caches.open('mypwa-offline').then(function(cache) {
-                    return cache.match('offline.html');
+                    return cache.match('offline');
                 });
             }
         ));
