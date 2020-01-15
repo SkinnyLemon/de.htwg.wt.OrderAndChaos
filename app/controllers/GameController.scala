@@ -3,11 +3,11 @@ package controllers
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.stream.Materializer
 import de.htwg.se.orderandchaos.OrderAndChaos
-import de.htwg.se.orderandchaos.control.{CellSet, Control, Win}
 import de.htwg.se.orderandchaos.control.json.JsonConverter
+import de.htwg.se.orderandchaos.control.{CellSet, Control, Win}
 import javax.inject._
 import parser.JsonExecutor
-import play.api.libs.json.{JsValue, Json}
+import play.api.libs.json.Json
 import play.api.libs.streams.ActorFlow
 import play.api.mvc._
 
@@ -66,7 +66,9 @@ class GameController @Inject()(cc: ControllerComponents)(implicit system: ActorS
     sendJson()
 
     def receive: PartialFunction[Any, Unit] = {
-      case msg: String => jsonExecutor.execute(Json.parse(msg))
+      case msg: String => {
+        jsonExecutor.execute(Json.parse(msg))
+      }
     }
 
     reactions += {

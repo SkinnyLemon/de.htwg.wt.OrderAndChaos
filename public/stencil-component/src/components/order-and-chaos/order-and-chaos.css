@@ -1,0 +1,176 @@
+.row {
+    width: 100%;
+}
+
+@media (min-width: 365px) {
+    .game {
+        width: 330px;
+    }
+
+    .game-row {
+        height: 55px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .game-cell {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .choice {
+        opacity: 0.1;
+    }
+}
+
+@media (min-width: 576px) {
+    .choice {
+        opacity: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .game {
+        width: 460px;
+    }
+
+    .game-row {
+        height: 76px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .game-cell {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}
+
+@media (min-width: 992px) {
+    .game {
+        width: 620px;
+    }
+
+    .game-row {
+        height: 103px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .game-cell {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .game {
+        width: 740px;
+    }
+
+    .game-row {
+        height: 123px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .game-cell {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+body {
+    background-color: #333333;
+}
+
+.game {
+    margin: auto;
+    font-family: Calibri, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #666666;
+}
+
+.game-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.turn {
+    text-align: center;
+}
+
+
+.game-cell {
+    flex-grow: 1;
+    height: 100%;
+    width : 100%;
+    border-radius: 5%;
+    position: relative;
+    display: flex;
+}
+
+.empty-cell {
+    background-color: #888888;
+}
+
+.empty-cell-blocked {
+    background-color: #777777;
+}
+
+.red-cell {
+    background-color: darkred;
+}
+
+.blue-cell {
+    background-color: darkblue;
+}
+
+.choice-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.choice {
+    width: 50%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+.choice:hover {
+    opacity: 1;
+}
+
+.red-choice {
+    background-color: red;
+}
+
+.blue-choice {
+    background-color: blue;
+}
+
+.side-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.side-button {
+    margin: 5px;
+    width: 100px;
+    flex-grow: 1;
+}
+
+.error-message {
+    margin: 10px auto;
+}

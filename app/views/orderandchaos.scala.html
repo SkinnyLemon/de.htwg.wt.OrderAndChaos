@@ -8,39 +8,7 @@
     }
 
     @main("Order and Chaos") {
-        <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/orderandchaos.css")' />
+        <script src='@routes.Assets.versioned("stencil-component/dist/order-and-chaos.js")'></script>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1 class="turn text-light" id="top-text">Turn: @controller.turn</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="game">
-                    @for(row <- size - 1 to 0 by -1) {
-                        <div class="game-row">
-                        @for(col <- 0 until size) {
-                            <div class="game-cell" id="game-cell@col@row"></div>
-                        }
-                        </div>
-                    }
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="side-buttons">
-                        <div class="btn btn-primary side-button" id="undo-button"> Undo </div>
-                        <div class="btn btn-primary side-button" id="redo-button"> Redo </div>
-                    </div>
-                </div>
-            </div>
-            @if(!(error equals "")) {
-                <div class="row">
-                    <div class="alert alert-danger error-message">
-                    @error
-                    </div>
-                </div>
-            }
-        </div>
+        <order-and-chaos address="localhost:9000/socket"></order-and-chaos>
     }
