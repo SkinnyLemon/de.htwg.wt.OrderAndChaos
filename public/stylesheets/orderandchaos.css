@@ -108,6 +108,7 @@ body {
 .game-cell {
     flex-grow: 1;
     height: 100%;
+    width : 100%;
     border-radius: 5%;
     position: relative;
     display: flex;
@@ -115,17 +116,18 @@ body {
 
 .empty-cell {
     background-color: #888888;
-    width : 100%;
+}
+
+.empty-cell-blocked {
+    background-color: #777777;
 }
 
 .red-cell {
     background-color: darkred;
-    width : 100%;
 }
 
 .blue-cell {
     background-color: darkblue;
-    width : 100%;
 }
 
 .choice {
