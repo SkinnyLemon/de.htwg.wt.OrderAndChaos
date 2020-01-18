@@ -1,4 +1,9 @@
-@(controller: de.htwg.se.orderandchaos.control.controller.Controller, error: String)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(controller: de.htwg.se.orderandchaos.control.controller.Controller, error: String, user:models.User)(implicit request: RequestHeader, message: Messages, webJarsUtil:WebJarsUtil, assets:AssetsFinder)
     @size = @{
         de.htwg.se.orderandchaos.model.grid.Grid.WIDTH
     }
@@ -7,10 +12,12 @@
         controller.grid
     }
 
-    @main("Order and Chaos") {
-        <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/orderandchaos.css")' />
-        <script src="@routes.Assets.versioned("javascripts/vue.js")"></script>
-        <script src="@routes.Assets.versioned("javascripts/oacvue.js")"></script>
+    @main("Order and Chaos",Some(user)) {
+        <script src="@assets.path("javascripts/vue.js")"></script>
+        <script src="@assets.path("javascripts/oacvue.js")"></script>
+
+        <link rel="stylesheet" href='@assets.path("stylesheets/orderandchaos.css")' />
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

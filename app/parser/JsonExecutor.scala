@@ -1,7 +1,7 @@
 package parser
 
 import de.htwg.se.orderandchaos.control.Control
-import play.api.libs.json.{JsError, JsLookupResult, JsSuccess, JsValue, Json}
+import play.api.libs.json._
 
 import scala.util.Try
 
