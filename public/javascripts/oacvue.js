@@ -1,4 +1,4 @@
-let grid = [row(0),row(1),row(2),row(3),row(4),row(5)]
+let mygrid = [row(0),row(1),row(2),row(3),row(4),row(5)]
 
 function row(row) {
     let gameCells= []
@@ -22,7 +22,7 @@ Vue.component('my-game-field', {
         `,
         data:function() {
             return {
-                gamecells: grid
+                gamecells: mygrid
             }
         },
 
