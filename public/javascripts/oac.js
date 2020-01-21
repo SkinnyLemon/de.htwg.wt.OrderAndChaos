@@ -1,29 +1,5 @@
-{
-function row(row) {
-    let gameCells= []
-    for (let col=0;col<6;col++) {
-        gameCells.push({row: row, col: col, pos: "game-cell" + row + col})
-    }
-    return gameCells
-}
-
-
 let status;
-const webSocket = new WebSocket("ws://localhost:9000/socket");
-webSocket.onopen = function () {
-    console.log("WebSocket opened");
-};
-webSocket.onmessage = function (message) {
-    console.log("WebSocket Message received");
-    console.log(JSON.parse(message.data));
-    status = new Status(JSON.parse(message.data));
-};
-webSocket.onerror = function () {
-    console.error("WebSocket error");
-};
-webSocket.onclose = function () {
-    console.log("WebSocket closed");
-};
+let webSocket;
 
 class Status {
     constructor(websocket) {
@@ -103,63 +79,42 @@ function setCell(x, y, type) {
     sendMessage(message);
 }
 
+function undo() {
+    console.log("Undoing last step");
+    const message = {"action": "undo"};
+    sendMessage(message);
+}
+
+function redo() {
+    console.log("Redoing last step");
+    const message = {"action": "redo"};
+    sendMessage(message);
+}
 
 function sendMessage(message) {
     webSocket.send(JSON.stringify(message))
 }
 
-
-$(document).ready(function() {
-    var game = new Vue({
-        el: '#game',
-    });
+$(document).ready(function () {
     $("#undo-button").click(function () {
         undo()
     });
     $("#redo-button").click(function () {
         redo()
     });
-    });
-    Vue.component('my-game-field', {
-            template: `
-                <div class="col-sm-8">
-                    <div class="game">
-                        <div class="game-row" v-for="row in gamecells">
-                            <div v-for="cell in row" class="game-cell empty-cell" v-bind:id="cell.pos"></div>
-                        </div>
-                    </div>
-                </div>
-
-
-            `,
-            data:function() {
-                return {
-                    gamecells: [row(0),row(1),row(2),row(3),row(4),row(5)]
-                }
-            },
-
-    });
-
-    Vue.component('my-buttons', {
-        template: `
-            <div class="col-sm-4">
-                <div class="side-buttons">
-                    <div class="btn btn-primary side-button" id="undo-button" @click="undo"> Undo </div>
-                    <div class="btn btn-primary side-button" id="redo-button" @click="redo"> Redo </div>
-                </div>
-            </div>
-        `,
-        methods: {
-            undo: function() {
-                console.log("Undoing last step");
-                const message = {"action": "undo"};
-                sendMessage(message);
-            },
-            redo: function() {
-                console.log("Redoing last step");
-                const message = {"action": "redo"};
-                sendMessage(message);
-            }
-        }
-    });
-}
+    webSocket = new WebSocket("ws://localhost:9000/socket");
+    webSocket.onopen = function () {
+        console.log("WebSocket opened");
+    };
+    webSocket.onmessage = function (message) {
+        console.log("WebSocket Message received");
+        console.log(JSON.parse(message.data));
+        status = new Status(JSON.parse(message.data));
+    };
+    webSocket.onerror = function () {
+        console.error("WebSocket error");
+    };
+    webSocket.onclose = function () {
+        console.log("WebSocket closed");
+    };
+});
