@@ -76,7 +76,7 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Silhouette <noreply@mohiva.com>
+email.from = Team Orderandchaos <teamorderandchaos@gmail.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
