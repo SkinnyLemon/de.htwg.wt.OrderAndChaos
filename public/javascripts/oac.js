@@ -104,7 +104,7 @@ $(document).ready(function () {
     });
     webSocket = new WebSocket("wss://orderachaos.herokuapp.com/socket");
     webSocket.onopen = function () {
-        console.log("WebSocket opened");
+        console.log("WebSocket opened!");
     };
     webSocket.onmessage = function (message) {
         console.log("WebSocket Message received");
