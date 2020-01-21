@@ -102,7 +102,7 @@ $(document).ready(function () {
     $("#redo-button").click(function () {
         redo()
     });
-    webSocket = new WebSocket("ws://localhost:9000/socket");
+    webSocket = new WebSocket("ws://orderachaos.herokuapp.com/socket");
     webSocket.onopen = function () {
         console.log("WebSocket opened");
     };

@@ -9,7 +9,7 @@ function row(row) {
 
 
 let status;
-const webSocket = new WebSocket("ws://localhost:9000/socket");
+const webSocket = new WebSocket("ws://orderachaos.herokuapp.com/socket");
 webSocket.onopen = function () {
     console.log("WebSocket opened");
 };
